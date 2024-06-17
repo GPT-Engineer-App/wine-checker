@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
+import "./styles.css"; // Import the new CSS file
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 const colors = {
