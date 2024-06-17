@@ -52,16 +52,16 @@ const Index = () => {
   return (
     <Container centerContent maxW="container.md" py={10}>
       <VStack spacing={6} w="100%">
-        <Heading as="h1" size="xl">Pension Presier Wine Inventory</Heading>
-        <Image src="/images/red_wine_glass.jpg" alt="Red Wine Glass" boxSize="300px" objectFit="cover" borderRadius="md" />
-        <Text fontSize="lg">Check the amount of wine purchased and sell it from the table below.</Text>
+        <Heading as="h1" size="xl">ペンションプレジエ ワイン在庫</Heading>
+        <Image src="/images/red_wine_glass.jpg" alt="赤ワイングラス" boxSize="300px" objectFit="cover" borderRadius="md" />
+        <Text fontSize="lg">購入したワインの量を確認し、以下の表から販売してください。</Text>
         <Table variant="simple" w="100%">
           <Thead>
             <Tr>
-              <Th>Wine</Th>
-              <Th isNumeric>Quantity</Th>
-              <Th>Action</Th>
-              <Th>Add to Cart</Th> {/* Add a new column for adding to cart */}
+              <Th>ワイン</Th>
+              <Th isNumeric>数量</Th>
+              <Th>アクション</Th>
+              <Th>カートに追加</Th> {/* Add a new column for adding to cart */}
             </Tr>
           </Thead>
           <Tbody>
@@ -71,12 +71,12 @@ const Index = () => {
                 <Td isNumeric>{wine.quantity}</Td>
                 <Td>
                   <Button colorScheme="teal" size="sm" onClick={() => handleSell(wine.id)} isDisabled={wine.quantity === 0}>
-                    Sell
+                    販売
                   </Button>
                 </Td>
                 <Td>
                   <Button colorScheme="blue" size="sm" onClick={() => handleAddToCart(wine)}>
-                    Add to Cart
+                    カートに追加
                   </Button>
                 </Td>
               </Tr>
@@ -84,7 +84,7 @@ const Index = () => {
           </Tbody>
         </Table>
         <Link to="/cart">
-          <Button colorScheme="teal" size="lg">View Cart</Button>
+          <Button colorScheme="teal" size="lg">カートを見る</Button>
         </Link>
       </VStack>
     </Container>

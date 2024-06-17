@@ -12,8 +12,8 @@ const Cart = () => {
   const handleRemove = (id) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
     toast({
-      title: "Item removed.",
-      description: "You have removed an item from the cart.",
+      title: "アイテムが削除されました。",
+      description: "カートからアイテムを削除しました。",
       status: "info",
       duration: 2000,
       isClosable: true,
@@ -23,14 +23,14 @@ const Cart = () => {
   return (
     <Container centerContent maxW="container.md" py={10}>
       <VStack spacing={6} w="100%">
-        <Heading as="h1" size="xl">Shopping Cart</Heading>
-        <Text fontSize="lg">Review your selected wines and proceed to checkout.</Text>
+        <Heading as="h1" size="xl">ショッピングカート</Heading>
+        <Text fontSize="lg">選択したワインを確認し、チェックアウトに進んでください。</Text>
         <Table variant="simple" w="100%">
           <Thead>
             <Tr>
-              <Th>Wine</Th>
-              <Th isNumeric>Quantity</Th>
-              <Th>Action</Th>
+              <Th>ワイン</Th>
+              <Th isNumeric>数量</Th>
+              <Th>アクション</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -40,14 +40,14 @@ const Cart = () => {
                 <Td isNumeric>{item.quantity}</Td>
                 <Td>
                   <Button colorScheme="red" size="sm" onClick={() => handleRemove(item.id)}>
-                    Remove
+                    削除
                   </Button>
                 </Td>
               </Tr>
             ))}
           </Tbody>
         </Table>
-        <Button colorScheme="teal" size="lg">Proceed to Checkout</Button>
+        <Button colorScheme="teal" size="lg">チェックアウトに進む</Button>
       </VStack>
     </Container>
   );
