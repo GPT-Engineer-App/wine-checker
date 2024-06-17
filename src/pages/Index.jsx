@@ -1,4 +1,4 @@
-import { Container, VStack, Heading, Text, Button, Table, Thead, Tbody, Tr, Th, Td, useToast } from "@chakra-ui/react";
+import { Container, VStack, Heading, Text, Button, Table, Thead, Tbody, Tr, Th, Td, useToast, Image } from "@chakra-ui/react";
 import { useState } from "react";
 
 const Index = () => {
@@ -31,6 +31,7 @@ const Index = () => {
     <Container centerContent maxW="container.md" py={10}>
       <VStack spacing={6} w="100%">
         <Heading as="h1" size="xl">Pension Presier Wine Inventory</Heading>
+        <Image src="/images/red_wine_glass.jpg" alt="Red Wine Glass" boxSize="300px" objectFit="cover" borderRadius="md" />
         <Text fontSize="lg">Check the amount of wine purchased and sell it from the table below.</Text>
         <Table variant="simple" w="100%">
           <Thead>
