@@ -1,5 +1,6 @@
 import { Container, VStack, Heading, Text, Button, Table, Thead, Tbody, Tr, Th, Td, useToast, Image } from "@chakra-ui/react";
 import { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const Index = () => {
   const [wineData, setWineData] = useState([
@@ -8,6 +9,7 @@ const Index = () => {
     { id: 3, name: "Rose Wine", quantity: 8 },
   ]);
 
+  const [cart, setCart] = useState([]);
   const toast = useToast();
 
   const handleSell = (id) => {
@@ -27,6 +29,26 @@ const Index = () => {
     });
   };
 
+  const handleAddToCart = (wine) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item.id === wine.id);
+      if (existingItem) {
+        return prevCart.map((item) =>
+          item.id === wine.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      } else {
+        return [...prevCart, { ...wine, quantity: 1 }];
+      }
+    });
+    toast({
+      title: "Wine added to cart.",
+      description: `${wine.name} has been added to your cart.`,
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+    });
+  };
+
   return (
     <Container centerContent maxW="container.md" py={10}>
       <VStack spacing={6} w="100%">
@@ -39,6 +61,7 @@ const Index = () => {
               <Th>Wine</Th>
               <Th isNumeric>Quantity</Th>
               <Th>Action</Th>
+              <Th>Add to Cart</Th> {/* Add a new column for adding to cart */}
             </Tr>
           </Thead>
           <Tbody>
@@ -51,10 +74,18 @@ const Index = () => {
                     Sell
                   </Button>
                 </Td>
+                <Td>
+                  <Button colorScheme="blue" size="sm" onClick={() => handleAddToCart(wine)}>
+                    Add to Cart
+                  </Button>
+                </Td>
               </Tr>
             ))}
           </Tbody>
         </Table>
+        <Link to="/cart">
+          <Button colorScheme="teal" size="lg">View Cart</Button>
+        </Link>
       </VStack>
     </Container>
   );
