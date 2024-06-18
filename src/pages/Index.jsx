@@ -65,7 +65,7 @@ const Index = () => {
   return (
     <Container centerContent maxW="container.md" py={10}>
       <VStack spacing={6} w="100%">
-        <Heading as="h1" size="xl">ペンションプレジエ ワイン在庫</Heading>
+        <Heading as="h1" size="xl">ぷれじーる ワイン在庫</Heading>
         <Image src="/images/red_wine_glass.jpg" alt="赤ワイングラス" boxSize="300px" objectFit="cover" borderRadius="md" />
         <Text fontSize="lg">購入したワインの量を確認し、以下の表から販売してください。</Text>
         <Table variant="simple" w="100%">
