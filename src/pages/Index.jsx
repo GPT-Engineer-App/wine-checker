@@ -9,6 +9,12 @@ const Index = () => {
     { id: 3, name: "Rose Wine", quantity: 8 },
   ]);
 
+  const [salesData, setSalesData] = useState([
+    { id: 1, name: "Red Wine", sales: 0 },
+    { id: 2, name: "White Wine", sales: 0 },
+    { id: 3, name: "Rose Wine", sales: 0 },
+  ]);
+
   const [cart, setCart] = useState([]);
   const toast = useToast();
 
@@ -17,6 +23,13 @@ const Index = () => {
       prevData.map((wine) =>
         wine.id === id && wine.quantity > 0
           ? { ...wine, quantity: wine.quantity - 1 }
+          : wine
+      )
+    );
+    setSalesData((prevSales) =>
+      prevSales.map((wine) =>
+        wine.id === id
+          ? { ...wine, sales: wine.sales + 1 }
           : wine
       )
     );
@@ -60,8 +73,9 @@ const Index = () => {
             <Tr>
               <Th>ワイン</Th>
               <Th isNumeric>数量</Th>
+              <Th isNumeric>販売数量</Th> {/* Add a new column for sales quantity */}
               <Th>アクション</Th>
-              <Th>カートに追加</Th> {/* Add a new column for adding to cart */}
+              <Th>カートに追加</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -69,6 +83,7 @@ const Index = () => {
               <Tr key={wine.id}>
                 <Td>{wine.name}</Td>
                 <Td isNumeric>{wine.quantity}</Td>
+                <Td isNumeric>{salesData.find((sale) => sale.id === wine.id)?.sales || 0}</Td> {/* Display sales quantity */}
                 <Td>
                   <Button colorScheme="teal" size="sm" onClick={() => handleSell(wine.id)} isDisabled={wine.quantity === 0}>
                     販売
